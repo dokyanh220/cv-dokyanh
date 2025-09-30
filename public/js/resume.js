@@ -1,4 +1,3 @@
-// <!-- Author: https://trungquandev.com -->
 function zoomImages(className) {
   $(`.${className}`).unbind("click").on("click", function() {
     $("#div-zoom-area").css("display", "block");
@@ -40,10 +39,10 @@ function zoomImages(className) {
   // Say hello when access page.
   if (window.innerWidth < 992) {
     // Default position of notify is bottom-right
-    alertify.success("Have A Nice Day Everyone! I'm TrungQuanDev from Vietnam 🇻🇳", 5);
+    alertify.success("Have A Nice Day Everyone! I'm Dokyanh from Vietnam 🇻🇳", 5);
   } else {
     alertify.set("notifier","position", "top-right");
-    alertify.success("Have A Nice Day Everyone! I'm TrungQuanDev from Vietnam 🇻🇳", 5);
+    alertify.success("Have A Nice Day Everyone! I'm Dokyanh from Vietnam 🇻🇳", 5);
   }
 
   // Zoom images that have class name: img-zoomable

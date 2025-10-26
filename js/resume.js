@@ -1,10 +1,10 @@
 function zoomImages(className) {
   $(`.${className}`).unbind("click").on("click", function() {
-    $("#div-zoom-area").css("display", "block");
+    $("#div-zoom-area").addClass("show");
     $("#img-zoom-area-content").attr("src", $(this)[0].src);
 
-    $("#div-zoom-area").on("click", function() {
-      $(this).css("display", "none");
+    $("#div-zoom-area").one("click", function() {
+      $(this).removeClass("show");
     });
   });
 }

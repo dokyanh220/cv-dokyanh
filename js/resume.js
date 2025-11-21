@@ -1,51 +1,32 @@
-function zoomImages(className) {
-  $(`.${className}`).unbind("click").on("click", function() {
-    $("#div-zoom-area").addClass("show");
-    $("#img-zoom-area-content").attr("src", $(this)[0].src);
+// Modal cho ảnh chứng chỉ - style LinkedIn media viewer
+document.addEventListener("DOMContentLoaded", function () {
+  const modal = document.getElementById("imgModal");
+  const modalImg = document.getElementById("modalImg");
+  const modalDesc = document.getElementById("modalDesc");
+  const closeModal = document.getElementById("closeModal");
+  const modalTitle = document.getElementById("modalTitle");
 
-    $("#div-zoom-area").one("click", function() {
-      $(this).removeClass("show");
-    });
+  document.querySelectorAll('.modal-trigger').forEach(function (img) {
+    img.onclick = function () {
+      modal.style.display = "flex";
+      modalImg.src = img.src;
+      modalImg.alt = img.getAttribute('data-title') || '';
+      modalTitle.textContent = img.getAttribute('data-title') || "Phương tiện truyền thông";
+      modalDesc.innerText = img.closest('.cert').getAttribute('data-desc');
+    };
   });
-}
 
-(function($) {
-  "use strict"; // Start of use strict
+  closeModal.onclick = function () {
+    modal.style.display = "none";
+    modalImg.src = "";
+    modalDesc.innerText = "";
+  };
 
-  // Smooth scrolling using jQuery easing
-  $("a.js-scroll-trigger[href*='#']:not([href='#'])").click(function() {
-    if (location.pathname.replace(/^\//, "") == this.pathname.replace(/^\//, "") && location.hostname == this.hostname) {
-      var target = $(this.hash);
-      target = target.length ? target : $("[name=" + this.hash.slice(1) + "]");
-      if (target.length) {
-        $("html, body").animate({
-          scrollTop: (target.offset().top)
-        }, 500, "easeInOutExpo");
-        return false;
-      }
+  window.onclick = function (event) {
+    if (event.target === modal) {
+      modal.style.display = "none";
+      modalImg.src = "";
+      modalDesc.innerText = "";
     }
-  });
-
-  // Closes responsive menu when a scroll trigger link is clicked
-  $(".js-scroll-trigger").click(function() {
-    $(".navbar-collapse").collapse("hide");
-  });
-
-  // Activate scrollspy to add active class to navbar items on scroll
-  $("body").scrollspy({
-    target: "#sideNav"
-  });
-  
-  // Say hello when access page.
-  if (window.innerWidth < 992) {
-    // Default position of notify is bottom-right
-    alertify.success("Have A Nice Day Everyone! I'm Dokyanh from Vietnam 🇻🇳", 5);
-  } else {
-    alertify.set("notifier","position", "top-right");
-    alertify.success("Have A Nice Day Everyone! I'm Dokyanh from Vietnam 🇻🇳", 5);
-  }
-
-  // Zoom images that have class name: img-zoomable
-  zoomImages("img-zoomable");
-
-})(jQuery); // End of use strict
+  };
+});

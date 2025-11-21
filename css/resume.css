@@ -18,9 +18,13 @@ body {
   box-sizing: border-box;
   border-right: 3px solid #e4d9cb;
 }
+.profile-photo {
+  display: flex;
+  justify-content: center;
+}
 .profile-photo img {
   width: 100%;
-  max-width: 180px;
+  max-width: 220px;
   border-radius: 12px;
   margin-bottom: 20px;
   display: block;
@@ -134,6 +138,11 @@ body {
   .sidebar { border-right: none; border-bottom: 2px solid #e4d9cb; }
   .row { flex-direction: column; gap: 20px; }
   .section.skills, .section.education, .section.projects, .section.more { width: 100%; }
+  .profile-photo img {
+    border-radius: 50%;
+    width: 240px;
+    height: 240px;
+  }
 }
 
 .modal-modal {
